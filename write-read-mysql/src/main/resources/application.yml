@@ -1,0 +1,38 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
+  port: 8000
+spring:
+  druid:
+    user-master:
+      borrowConnectionTimeout: 30000
+      maxActive: 20
+      maxWait: 10000
+      minEvictableIdleTimeMillis: 300000
+      minIdle: 3
+      password: 123
+      timeBetweenEvictionRunsMillis: 60000
+      url: jdbc:mysql://127.0.0.1:3306/user?useSSL=true
+      username: root
+      validationQuery: SELECT 'x'
+    user-slave:
+      borrowConnectionTimeout: 30000
+      maxActive: 20
+      maxWait: 10000
+      minEvictableIdleTimeMillis: 300000
+      minIdle: 3
+      password: 123
+      timeBetweenEvictionRunsMillis: 60000
+      url: jdbc:mysql://localhost:3306/user_1?useSSL=true
+      username: root
+      validationQuery: SELECT 'x'
+
+mapper:
+  not-empty: true
+  identity: MYSQL
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*Mapper.xml
+
