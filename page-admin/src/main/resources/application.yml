@@ -1,0 +1,52 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
+  port: 8000
+spring:
+  druid:
+    borrowConnectionTimeout: 30000
+    maxActive: 20
+    maxWait: 10000
+    minEvictableIdleTimeMillis: 300000
+    minIdle: 3
+    password: 123
+    timeBetweenEvictionRunsMillis: 60000
+    url: jdbc:mysql://127.0.0.1:3306/user?useSSL=true
+    username: root
+    validationQuery: SELECT 'x'
+  application:
+    name: chat
+  servlet:
+    multipart:
+      max-file-size: 200Mb
+      max-request-size: 200Mb
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    check-template: true
+    suffix: .html
+    encoding: utf-8
+    servlet:
+      content-type: text/html
+    mode: HTML5
+mapper:
+  not-empty: true
+  identity: MYSQL
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*Mapper.xml
+image:
+  file:
+    path: "D:"
+
+swagger:
+  enable: true
+
+#   全局跨域配置
+#management:
+#  endpoints:
+#    web:
+#      cors:
+#        allow-credentials:

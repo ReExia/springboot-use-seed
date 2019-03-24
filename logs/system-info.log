@@ -1,0 +1,2 @@
+2019-03-24 23:07:36.231 [Thread-19] INFO  [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext:991] [] - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@420bc288: startup date [Sun Mar 24 18:46:13 CST 2019]; root of context hierarchy
+2019-03-24 23:07:36.548 [Thread-19] INFO  [org.springframework.context.support.DefaultLifecycleProcessor:369] [] - Stopping beans in phase 2147483647
