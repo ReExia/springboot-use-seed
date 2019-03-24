@@ -15,7 +15,7 @@ public class FreeMarkerHelper {
 
     //制定模板加载路径
     static {
-        ClassTemplateLoader classTemplateLoader = new ClassTemplateLoader(FreeMarkerHelper.class, "/generator");
+        ClassTemplateLoader classTemplateLoader = new ClassTemplateLoader(FreeMarkerHelper.class, "/templates/generator");
         CONFIGURATION.setTemplateLoader(classTemplateLoader);
         CONFIGURATION.setDefaultEncoding(Charsets.UTF_8.name());
         CONFIGURATION.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
@@ -39,6 +39,10 @@ public class FreeMarkerHelper {
         CONFIGURATION.clearTemplateCache();
     }
 
+    public static void main(String[] args) throws IOException {
+        Template template = getTemplate("/model/entity.ftl");
+        System.out.println("xxxx");
+    }
 
 
 }

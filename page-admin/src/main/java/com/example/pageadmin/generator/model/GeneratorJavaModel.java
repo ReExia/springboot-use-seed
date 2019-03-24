@@ -4,18 +4,11 @@ public class GeneratorJavaModel {
 
     private  String suffix = ".java";
 
-    private  String path;
-
-    private GeneratorJavaModel() {
-    }
-
-    public GeneratorJavaModel(String suffix, String path) {
+    public GeneratorJavaModel(String suffix) {
         this.suffix = suffix;
-        this.path = path;
     }
 
-    public GeneratorJavaModel(String path) {
-        this.path = path;
+    public GeneratorJavaModel() {
     }
 
     public String getSuffix() {
@@ -24,13 +17,5 @@ public class GeneratorJavaModel {
 
     public void setSuffix(String suffix) {
         this.suffix = suffix;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
     }
 }

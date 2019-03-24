@@ -10,10 +10,9 @@ import class;
 
 /**
 *  Author : ${author}
-*  CreateDate: ${currentDate}
 */
 @Table(name = "${tableName}")
-public class ${entityName} {
+public class TestEntity {
 
 
 

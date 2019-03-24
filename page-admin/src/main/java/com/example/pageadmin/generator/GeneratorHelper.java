@@ -48,18 +48,25 @@ public class GeneratorHelper {
 
     private static void generateEntity(String packageName, String author,
                                        String tableName,Connection connection,
-                                       String path, String templatePath,
+                                       String templatePath,
                                        File file) throws Exception {
 
-        GeneratorJavaModel generatorJavaModel = new GeneratorJavaModel(path);
+        GeneratorJavaModel generatorJavaModel = new GeneratorJavaModel();
 
         Template template = FreeMarkerHelper.getTemplate(templatePath);
         FileOutputStream fos = new FileOutputStream(file);
 
-        Map<String, Object> templateMap = TableHelper.getTemplateMap(packageName, author, tableName, getConnection());
+        Map<String, Object> templateMap = TableHelper.getTemplateMap(packageName, author, tableName, connection);
 
         Writer out = new BufferedWriter(new OutputStreamWriter(fos, Charsets.UTF_8.name()), 10204);
         template.process(templateMap, out);
+    }
+
+    public static void main(String[] args) throws Exception {
+        String path = "D:/TestEntity.java";
+        String templatePath = "/model/entity.ftl";
+        File file = new File(path);
+        generateEntity("com.example.pageadmin.generator","liuhao","user",getConnection(),templatePath,file);
     }
 
 
