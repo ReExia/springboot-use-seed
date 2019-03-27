@@ -22,16 +22,7 @@ public class WebExceptionResolver {
     public Object resolveException(Exception e) {
         //参数校验异常
         if (e instanceof BindException) {
-            BindException ex = (BindException) e;
-            //捕获的所有错误对象
-            BindingResult bindingResult = ex.getBindingResult();
-            List<FieldError> fieldErrors = bindingResult.getFieldErrors();
-
-            List<ValidateError> result = new ArrayList<>();
-
-            fieldErrors.forEach(fieldError -> result.add(
-                    ValidateError.build(fieldError.getField(), fieldError.getDefaultMessage())
-            ));
+            List<ValidateError> result = getValidateErrors((BindException) e);
             //异常内容
             return ApiResponse.ofMessage(ApiResponse.Status.INVALID_PARAM.getCode(),ApiResponse.Status.INVALID_PARAM.getMessage(), result);
         }
@@ -42,6 +33,20 @@ public class WebExceptionResolver {
 
         //2.其他类型异常
         return ApiResponse.ofStatus(ApiResponse.Status.INTERNAL_SERVER_ERROR);
+    }
+
+    private List<ValidateError> getValidateErrors(BindException e) {
+        BindException ex = e;
+        //捕获的所有错误对象
+        BindingResult bindingResult = ex.getBindingResult();
+        List<FieldError> fieldErrors = bindingResult.getFieldErrors();
+
+        List<ValidateError> result = new ArrayList<>();
+
+        fieldErrors.stream().forEach(fieldError -> result.add(
+                ValidateError.build(fieldError.getField(), fieldError.getDefaultMessage())
+        ));
+        return result;
     }
 
 }
